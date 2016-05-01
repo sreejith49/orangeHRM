@@ -14,13 +14,17 @@ public class Login extends Core{
 	@FindBy(css="input")
 	List<WebElement> listOfInput;
 	
+	@FindBy(css="a")
+	List<WebElement> listOfAnchor;
+	
 	Utilities utilities = PageFactory.initElements(driver, Utilities.class);
 	
 	public void AccessApplication(String username, String password){
 		
-		utilities.inputText(listOfInput, "id", "txtUsername", username);
+		utilities.inputText(listOfInput, "id", "txtUsername", username);		
 		utilities.inputText(listOfInput, "id", "txtPassword", password);
-		utilities.clickOnAnElement(listOfInput, "id", "btnLogin");	
+		utilities.clickOnAnElementUsingGetAttribute(listOfInput, "id", "btnLogin");	
+		utilities.verifyContentUsingGetText(listOfAnchor, "Welcome "+username, "Element found", "Element not found");
 		
 	}
 	

@@ -6,12 +6,18 @@ import org.testng.annotations.Test;
 import com.orangehrm.org.Core;
 
 public class LoginTestSuite extends Core{
-	
-	Login login = PageFactory.initElements(driver, Login.class);
-	
+			
 	@Test
 	public void testLogin(){
-		login.AccessApplication("Admin", "Password01");
+		try {
+			
+			Login login = PageFactory.initElements(driver, Login.class);
+			login.AccessApplication("Admin", "Password01");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
